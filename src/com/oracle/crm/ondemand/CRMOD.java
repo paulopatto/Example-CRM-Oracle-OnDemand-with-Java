@@ -60,5 +60,11 @@ public class CRMOD {
         return value;
     }
 
-    
+    public void ShowResponseHeaders(HttpURLConnection connection){
+        System.out.println("Headers.");
+        System.out.println("============================");
+        for(int i = 0; ;i++){
+            System.out.println(connection.getHeaderFieldKey(i) + " : " + connection.getHeaderField(i));
+        }
+    }
 }
