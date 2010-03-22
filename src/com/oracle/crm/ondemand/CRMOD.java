@@ -34,6 +34,7 @@ public class CRMOD {
         connection.setRequestMethod("GET");
         if(connection.getResponseCode() == HttpURLConnection.HTTP_OK){
             stringSessao = getCookieFromHeaders(connection);
+            showResponseHeaders(connection);
         }
         return stringSessao;
     }
@@ -45,7 +46,7 @@ public class CRMOD {
         connection.setRequestProperty("Cookie", cookie);
         connection.setRequestMethod("GET");
         if(connection.getResponseCode() == HttpURLConnection.HTTP_OK){
-            // showResponseHttpHeaders(connection);
+            showResponseHeaders(connection);
         }
     }
 
@@ -60,11 +61,16 @@ public class CRMOD {
         return value;
     }
 
-    public void ShowResponseHeaders(HttpURLConnection connection){
+    public void showResponseHeaders(HttpURLConnection connection){
         System.out.println("Headers.");
         System.out.println("============================");
         for(int i = 0; ;i++){
             System.out.println(connection.getHeaderFieldKey(i) + " : " + connection.getHeaderField(i));
         }
+    }
+
+    public static void main(String[] argumentos){
+        CRMOD c = new CRMOD();
+        
     }
 }
